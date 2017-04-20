@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "User Search Block/ViewController.swift"
+            timestampString = "514354189.021081"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "userProfile"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "User_Search_Block.ViewController.userImages.getter : Swift.Array&lt;__ObjC.UIImage&gt;"
+                  moduleName = "User Search Block"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ruslan/Developer/User%20Search%20Block/User%20Search%20Block/ViewController.swift"
+                  timestampString = "514354189.993333"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "User_Search_Block.ViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; User_Search_Block.ViewController"
+                  moduleName = "User Search Block"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ruslan/Developer/User%20Search%20Block/User%20Search%20Block/ViewController.swift"
+                  timestampString = "514354190.002054"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "202">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "User_Search_Block.ViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;User_Search_Block.ViewController&gt;"
+                  moduleName = "User Search Block"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ruslan/Developer/User%20Search%20Block/User%20Search%20Block/ViewController.swift"
+                  timestampString = "514354190.004677"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "126">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
