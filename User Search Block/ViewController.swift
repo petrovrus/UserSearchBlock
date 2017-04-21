@@ -37,11 +37,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         userProfile(name: "User 6", imageName: "profile-sample")
     ]
     
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfUsersFound
     }
 
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell
         cell.imageViewOfCell.image = UIImage(named: userImages[indexPath.row].imageName)
         cell.imageLabel.text = userImages[indexPath.row].name
