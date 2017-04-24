@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,14 +18,14 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzW-Og-eWH">
-                                <rect key="frame" x="0.0" y="228" width="320" height="200"/>
+                                <rect key="frame" x="0.0" y="327" width="375" height="200"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select user for privet challenge" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wpi-ZM-DRT" customClass="DesignableUITextField" customModule="User_Search_Block" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Q1a-xb-Lwr"/>
                                         </constraints>
@@ -37,7 +37,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ak-eR-OMN">
-                                        <rect key="frame" x="0.0" y="50" width="320" height="20"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="COp-Vi-Ptj"/>
                                         </constraints>
@@ -46,7 +46,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bud-BC-ZTL">
-                                        <rect key="frame" x="0.0" y="70" width="320" height="130"/>
+                                        <rect key="frame" x="0.0" y="70" width="375" height="130"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZLS-OU-nKl">
                                             <size key="itemSize" width="96" height="120"/>
@@ -124,6 +124,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="keyboardHeightLayoutConstraint" destination="Z5c-83-ple" id="I9g-uH-lIs"/>
+                        <outlet property="userCollectionView" destination="Bud-BC-ZTL" id="KG3-Zg-Ow1"/>
+                        <outlet property="userSearchBlock" destination="CzW-Og-eWH" id="x0P-9r-reU"/>
                         <outlet property="userSearchField" destination="Wpi-ZM-DRT" id="n9Z-7z-pXj"/>
                     </connections>
                 </viewController>

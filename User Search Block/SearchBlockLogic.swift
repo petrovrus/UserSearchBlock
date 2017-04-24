@@ -10,7 +10,4 @@ import Foundation
 
 class SearchBlockLogic {
     
-    public func searchUser(by currentText: String) -> [String] {
-        return [""]
-    }
 }
