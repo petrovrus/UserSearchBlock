@@ -17,7 +17,7 @@ class DesignableUITextField: UITextField {
         }
     }
         
-    func updateUI() {
+    private func updateUI() {
         if let image = leftImage {
             leftViewMode = .always
             let imageView = UIImageView(frame: CGRect(x: 15, y: 0, width: 20, height: 20))

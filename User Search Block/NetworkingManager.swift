@@ -1,9 +1,9 @@
 //
-//  NetworkingManager.swift
-//  User Search Block
+//  ConcurrentOperation.swift
+//  enjourney
 //
-//  Created by Ruslan on 02.05.17.
-//  Copyright © 2017 Ruslan Petrov. All rights reserved.
+//  Created by Balaban Alexander on 15/01/16.
+//  Copyright © 2016 Enjourney. All rights reserved.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class NetworkingManager {
-    //    static let host = "http://46.101.160.115"
+//    static let host = "http://46.101.160.115"
     static let host = "http://52.58.79.74"
     static let URL = host + "/v1"
     static var headers = [
@@ -19,7 +19,6 @@ class NetworkingManager {
     ]
 }
 
-/*
 // MARK: Authorization
 extension NetworkingManager {
     static let LoginSuccess = "LoginSuccess"
@@ -35,7 +34,7 @@ extension NetworkingManager {
                     let token = String(data: data, encoding: NSUTF8StringEncoding) ?? ""
                     headers["Authorization"] = "JWT \(token)"
                     
-                    let obj: [String: String] = ["username": username, "password": password]
+                    let obj: [String: String] = ["username": username, "password": password]                    
                     NSNotificationCenter.defaultCenter().postNotificationName(LoginSuccess, object: obj)
                     
                 } else {
@@ -57,8 +56,8 @@ extension NetworkingManager {
     class func register(email: String, username: String, password: String) {
         
         Alamofire.request(.POST, "\(URL)/users", parameters: ["email": email, "username": username, "password": password], encoding: .JSON)
-            .response { request, response, data, error in
-                
+                .response { request, response, data, error in
+                    
                 if response?.statusCode == 201 {
                     login(username, password: password)
                     NSNotificationCenter.defaultCenter().postNotificationName(RegistrationSuccess, object: nil)
@@ -103,33 +102,33 @@ extension NetworkingManager {
     
     class func getUserProfile(userId: String = "", finishBlock: (User) -> Void, errorBlock: (NSError?) -> Void) {
         Alamofire.request(.GET, "\(URL)/users/\(userId)", parameters: [:], encoding: .URL, headers: headers)
-            .responseSwiftyJSON { (request, respnose, json, error) in
-                print("user profile json : \(json)")
-                if (error == nil) {
-                    finishBlock(User.userFromJson(json))
-                } else {
-                    errorBlock(error as? NSError ?? nil)
-                }
+        .responseSwiftyJSON { (request, respnose, json, error) in
+            print("user profile json : \(json)")
+            if (error == nil) {
+                finishBlock(User.userFromJson(json))
+            } else {
+                errorBlock(error as? NSError ?? nil)
+            }
         }
     }
 }
 
 // MARK: Followers & Followings
 extension NetworkingManager {
-    //    static let GetFollowersSuccess = "GetFollowersSuccess"
-    //    static let GetFollowersFailure = "GetFollowersFailure"
-    //
-    //    class func getFollowers(id: String = "") {
-    //        Alamofire.request(.GET, "\(URL)/followers", parameters: ["id": id], encoding: .URL, headers: headers)
-    //            .response { request, response, data, error in
-    //
-    //                if response?.statusCode == 200 {
-    //                    NSNotificationCenter.defaultCenter().postNotificationName(GetFollowersSuccess, object: nil)
-    //                } else {
-    //                    NSNotificationCenter.defaultCenter().postNotificationName(GetFollowersFailure, object: nil)
-    //                }
-    //        }
-    //    }
+//    static let GetFollowersSuccess = "GetFollowersSuccess"
+//    static let GetFollowersFailure = "GetFollowersFailure"
+//    
+//    class func getFollowers(id: String = "") {
+//        Alamofire.request(.GET, "\(URL)/followers", parameters: ["id": id], encoding: .URL, headers: headers)
+//            .response { request, response, data, error in
+//                
+//                if response?.statusCode == 200 {
+//                    NSNotificationCenter.defaultCenter().postNotificationName(GetFollowersSuccess, object: nil)
+//                } else {
+//                    NSNotificationCenter.defaultCenter().postNotificationName(GetFollowersFailure, object: nil)
+//                }
+//        }
+//    }
 }
 
 
@@ -142,14 +141,14 @@ extension NetworkingManager {
         
         
         Alamofire.request(.GET, "\(URL)/feed", parameters: ["since": since], encoding: .URL, headers: headers)
-            .responseSwiftyJSON { (request, response, json, error) in
-                
-                print("json : \(json)")
-                if error == nil {
-                    NSNotificationCenter.defaultCenter().postNotificationName(FeedSuccess, object: FeedItem.feedsFromJson(json))
-                } else {
-                    NSNotificationCenter.defaultCenter().postNotificationName(FeedFailure, object: nil)
-                }
+        .responseSwiftyJSON { (request, response, json, error) in
+            
+            print("json : \(json)")
+            if error == nil {
+                NSNotificationCenter.defaultCenter().postNotificationName(FeedSuccess, object: FeedItem.feedsFromJson(json))
+            } else {
+                NSNotificationCenter.defaultCenter().postNotificationName(FeedFailure, object: nil)
+            }
         }
     }
 }
@@ -219,7 +218,7 @@ extension NetworkingManager {
     
     class func declineChallenge(challengeId: String) {
         Alamofire.request(.DELETE, "\(URL)/accepts", parameters: ["challengeId": challengeId], encoding: .JSON, headers: headers).responseSwiftyJSON { (request, response, json, error) in
-            print("json : \(json)")
+                print("json : \(json)")
         }
     }
 }
@@ -266,18 +265,16 @@ extension NetworkingManager {
     
     class func getReports(since: String = "") {
         Alamofire.request(.GET, "\(URL)/explore/reports", parameters: ["since" : since], encoding: .URL, headers: headers)
-            .responseSwiftyJSON { (request, response, json, error) in
-                if error == nil {
-                    print("json : \(json)")
-                    NSNotificationCenter.defaultCenter().postNotificationName(GetReportsSuccess, object: Report.reportsFromJson(json))
-                } else {
-                    NSNotificationCenter.defaultCenter().postNotificationName(GetReportsFailure, object: error as? NSError ?? nil)
-                }
+        .responseSwiftyJSON { (request, response, json, error) in
+            if error == nil {
+                print("json : \(json)")
+                NSNotificationCenter.defaultCenter().postNotificationName(GetReportsSuccess, object: Report.reportsFromJson(json))
+            } else {
+                NSNotificationCenter.defaultCenter().postNotificationName(GetReportsFailure, object: error as? NSError ?? nil)
+            }
         }
     }
 }
- 
-*/
 
 
 extension NetworkingManager {
@@ -285,21 +282,19 @@ extension NetworkingManager {
     static let GetUsersFailure = "GetUsersFailure"
     
     class func getUsers(since: String = "") {
-        let parameters: Parameters = ["since" : since]
-        Alamofire.request("\(URL)/explore/users", parameters: parameters, encoding: URLEncoding.default, headers: headers)
-            .responseJSON { response in
-                if response.error == nil {
-                    let json = JSON(data: response.data!)
+        Alamofire.request(.GET, "\(URL)/explore/users", parameters: ["since" : since], encoding: .URL, headers: headers)
+            .responseSwiftyJSON { (request, response, json, error) in
+                if error == nil {
                     print("json : \(json)")
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: GetUsersSuccess), object: User.usersFromJson(json))
+                    NSNotificationCenter.defaultCenter().postNotificationName(GetUsersSuccess, object: User.usersFromJson(json))
                 } else {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: GetUsersFailure), object: response.error as NSError?)
+                    NSNotificationCenter.defaultCenter().postNotificationName(GetUsersFailure, object: error as? NSError ?? nil)
                 }
         }
     }
 }
 
-/*
+
 
 extension NetworkingManager {
     static let ProfilePublicationsSuccess = "ProfilePublicationsSuccess"
@@ -310,12 +305,12 @@ extension NetworkingManager {
         let request = Alamofire.request(.GET, "\(URL)/users/feed/\(userId)", parameters: [:], encoding: .URL, headers: headers)
         
         request.responseSwiftyJSON { (request, response, json, error) in
-            print("json : \(json)")
-            if error == nil {
-                finishBlock(Publication.publicationsFromJson(json))
-            } else {
-                errorBlock(error as? NSError ?? nil)
-            }
+                print("json : \(json)")
+                if error == nil {
+                    finishBlock(Publication.publicationsFromJson(json))
+                } else {
+                    errorBlock(error as? NSError ?? nil)
+                }
         }
     }
     
@@ -324,13 +319,13 @@ extension NetworkingManager {
     
     class func getProfileActives(userId: String = "", finishBlock: ([Active] -> Void), errorBlock: (NSError?) -> Void) {
         Alamofire.request(.GET, "\(URL)/users/active/\(userId)", parameters: [:], encoding: .URL, headers: headers)
-            .responseSwiftyJSON { (request, response, json, error) in
-                print("json : \(json)")
-                if error == nil {
-                    finishBlock(Active.activesFromJson(json))
-                } else {
-                    errorBlock(error as? NSError ?? nil)
-                }
+        .responseSwiftyJSON { (request, response, json, error) in
+            print("json : \(json)")
+            if error == nil {
+                finishBlock(Active.activesFromJson(json))
+            } else {
+                errorBlock(error as? NSError ?? nil)
+            }
         }
     }
     
@@ -339,13 +334,13 @@ extension NetworkingManager {
     
     class func getProfileReports(userId: String = "", finishBlock: ([ProfileReport]) -> Void, errorBlock: (NSError?) -> Void) {
         Alamofire.request(.GET, "\(URL)/users/performed/\(userId)", parameters: [:], encoding: .URL, headers: headers)
-            .responseSwiftyJSON { (request, response, json, error) in
-                print("json : \(json)")
-                if error == nil {
-                    finishBlock(ProfileReport.profileReportsFromJson(json))
-                } else {
-                    errorBlock(error as? NSError ?? nil)
-                }
+        .responseSwiftyJSON { (request, response, json, error) in
+            print("json : \(json)")
+            if error == nil {
+                finishBlock(ProfileReport.profileReportsFromJson(json))
+            } else {
+                errorBlock(error as? NSError ?? nil)
+            }
         }
     }
 }
@@ -362,7 +357,7 @@ extension NetworkingManager {
         
         params[JSONColumns.comment] = comment
         params[JSONColumns.acceptId] = id
-        
+
         var imagesData = [NSData]()
         for image in images {
             imagesData.append(UIImagePNGRepresentation(image)!)
@@ -382,22 +377,22 @@ extension NetworkingManager {
                 for (key, value) in params {
                     multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
                 }
-        }, encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .Success(let upload, _, _):
-                upload.responseSwiftyJSON(completionHandler: { (request, response, json, error) in
-                    if error != nil && json[JSONColumns.id] != JSON.null {
-                        NSNotificationCenter.defaultCenter().postNotificationName(ReportSendSuccess, object: nil)
-                    } else {
-                        NSNotificationCenter.defaultCenter().postNotificationName(ReportSendFailure, object: error as? NSError ?? nil)
-                    }
-                })
-                print(upload)
-            case .Failure(let encodingError):
-                print(encodingError)
-                NSNotificationCenter.defaultCenter().postNotificationName(ReportSendFailure, object: encodingError as NSError?)
+            }, encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseSwiftyJSON(completionHandler: { (request, response, json, error) in
+                        if error != nil && json[JSONColumns.id] != JSON.null {
+                            NSNotificationCenter.defaultCenter().postNotificationName(ReportSendSuccess, object: nil)
+                        } else {
+                            NSNotificationCenter.defaultCenter().postNotificationName(ReportSendFailure, object: error as? NSError ?? nil)
+                        }
+                    })
+                    print(upload)
+                case .Failure(let encodingError):
+                    print(encodingError)
+                    NSNotificationCenter.defaultCenter().postNotificationName(ReportSendFailure, object: encodingError as NSError?)
+                }
             }
-        }
         )
     }
 }
@@ -497,13 +492,13 @@ extension NetworkingManager {
     
     class func getFollowers(userId: String = "") {
         Alamofire.request(.GET, "\(URL)/followers/\(userId)", parameters: [:], encoding: .URL, headers: headers)
-            .responseSwiftyJSON { (request, response, json, error) in
-                print("json : \(json)")
-                if response?.statusCode == 200 {
-                    NSNotificationCenter.defaultCenter().postNotificationName(GetFollowersSuccess, object: User.usersFromJson(json))
-                } else {
-                    NSNotificationCenter.defaultCenter().postNotificationName(GetFollowersFailure, object: error as? NSError)
-                }
+        .responseSwiftyJSON { (request, response, json, error) in
+            print("json : \(json)")
+            if response?.statusCode == 200 {
+                NSNotificationCenter.defaultCenter().postNotificationName(GetFollowersSuccess, object: User.usersFromJson(json))
+            } else {
+                NSNotificationCenter.defaultCenter().postNotificationName(GetFollowersFailure, object: error as? NSError)
+            }
         }
     }
     
@@ -559,7 +554,6 @@ extension NetworkingManager {
         }
     }
     
-    
     class func acceptChallenge(challengeId: String, finishBlock: () -> Void, errorBlock: (NSError?) -> Void) {
         Alamofire.request(.POST, "\(URL)/accepts", parameters: [JSONColumns.challengeId : challengeId], encoding: .JSON, headers: headers).response { (request, response, data, error) in
             print(String(data: data!, encoding: NSUTF8StringEncoding))
@@ -574,16 +568,16 @@ extension NetworkingManager {
     
     class func getDetailedReport(reportId: String, finishBlock: (Report) -> Void, errorBlock: (NSError?) -> Void) {
         Alamofire.request(.GET, "\(URL)/reports/\(reportId)", parameters: [:], encoding: .URL, headers: headers)
-            .responseSwiftyJSON { (request, response, json, error) in
-                print("detailed report: \(json)")
-                if response?.statusCode == 200 {
-                    finishBlock(Report.createOrGetReportFromJson(json))
-                } else {
-                    errorBlock(error as? NSError ?? nil)
-                }
+        .responseSwiftyJSON { (request, response, json, error) in
+            print("detailed report: \(json)")
+            if response?.statusCode == 200 {
+                finishBlock(Report.createOrGetReportFromJson(json))
+            } else {
+                errorBlock(error as? NSError ?? nil)
+            }
         }
     }
-    
+
     class func getDetailedAccept(acceptId: String, finishBlock: (Accept) -> Void, errorBlock: (NSError?) -> Void) {
         Alamofire.request(.GET, "\(URL)/accepts/\(acceptId)", parameters: [:], encoding: .URL, headers: headers)
             .responseSwiftyJSON { (request, response, json, error) in
@@ -596,4 +590,34 @@ extension NetworkingManager {
         }
     }
 }
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

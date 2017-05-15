@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4404F9D91EC7B55A00CD8E4D /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F9D81EC7B55A00CD8E4D /* NetworkingManager.swift */; };
 		44100BC61EB7E5CC00738CE0 /* JSONColumns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44100BC51EB7E5CC00738CE0 /* JSONColumns.swift */; };
-		44535D0F1EAA09B0003539C1 /* SearchBlockLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44535D0E1EAA09B0003539C1 /* SearchBlockLogic.swift */; };
 		448BB7371EA85B14009FDC0E /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BB7361EA85B14009FDC0E /* ImageCollectionViewCell.swift */; };
-		44C011FB1EB87AF80022FE19 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C011FA1EB87AF80022FE19 /* NetworkingManager.swift */; };
 		44C50AAF1EA61F0C004B27BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C50AAE1EA61F0C004B27BA /* AppDelegate.swift */; };
-		44C50AB11EA61F0C004B27BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C50AB01EA61F0C004B27BA /* ViewController.swift */; };
+		44C50AB11EA61F0C004B27BA /* UserSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C50AB01EA61F0C004B27BA /* UserSearchVC.swift */; };
 		44C50AB41EA61F0C004B27BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44C50AB21EA61F0C004B27BA /* Main.storyboard */; };
 		44C50AB61EA61F0C004B27BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C50AB51EA61F0C004B27BA /* Assets.xcassets */; };
 		44C50AB91EA61F0C004B27BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44C50AB71EA61F0C004B27BA /* LaunchScreen.storyboard */; };
@@ -23,13 +22,12 @@
 
 /* Begin PBXFileReference section */
 		28804146CA8F21D87F6BC7B9 /* Pods-User Search Block.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-User Search Block.debug.xcconfig"; path = "Pods/Target Support Files/Pods-User Search Block/Pods-User Search Block.debug.xcconfig"; sourceTree = "<group>"; };
+		4404F9D81EC7B55A00CD8E4D /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		44100BC51EB7E5CC00738CE0 /* JSONColumns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONColumns.swift; sourceTree = "<group>"; };
-		44535D0E1EAA09B0003539C1 /* SearchBlockLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBlockLogic.swift; sourceTree = "<group>"; };
 		448BB7361EA85B14009FDC0E /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		44C011FA1EB87AF80022FE19 /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		44C50AAB1EA61F0C004B27BA /* User Search Block.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "User Search Block.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44C50AAE1EA61F0C004B27BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		44C50AB01EA61F0C004B27BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		44C50AB01EA61F0C004B27BA /* UserSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchVC.swift; sourceTree = "<group>"; };
 		44C50AB31EA61F0C004B27BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44C50AB51EA61F0C004B27BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44C50AB81EA61F0C004B27BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,14 +72,12 @@
 			isa = PBXGroup;
 			children = (
 				44CA946F1EBC540700B1A6BA /* User.swift */,
-				44C50AB01EA61F0C004B27BA /* ViewController.swift */,
-				44C011FA1EB87AF80022FE19 /* NetworkingManager.swift */,
+				4404F9D81EC7B55A00CD8E4D /* NetworkingManager.swift */,
+				44C50AB01EA61F0C004B27BA /* UserSearchVC.swift */,
 				44C50AB21EA61F0C004B27BA /* Main.storyboard */,
-				44535D0E1EAA09B0003539C1 /* SearchBlockLogic.swift */,
 				448BB7361EA85B14009FDC0E /* ImageCollectionViewCell.swift */,
 				44C50AC11EA6246B004B27BA /* DesignableUITextField.swift */,
-				44100BC51EB7E5CC00738CE0 /* JSONColumns.swift */,
-				44C50AAE1EA61F0C004B27BA /* AppDelegate.swift */,
+				44C50ABA1EA61F0C004B27BA /* Info.plist */,
 				44C50AC01EA61F16004B27BA /* Supporting Files */,
 			);
 			path = "User Search Block";
@@ -91,8 +87,9 @@
 			isa = PBXGroup;
 			children = (
 				44C50AB51EA61F0C004B27BA /* Assets.xcassets */,
+				44100BC51EB7E5CC00738CE0 /* JSONColumns.swift */,
 				44C50AB71EA61F0C004B27BA /* LaunchScreen.storyboard */,
-				44C50ABA1EA61F0C004B27BA /* Info.plist */,
+				44C50AAE1EA61F0C004B27BA /* AppDelegate.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -239,13 +236,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				44C50AC21EA6246B004B27BA /* DesignableUITextField.swift in Sources */,
-				44C50AB11EA61F0C004B27BA /* ViewController.swift in Sources */,
+				44C50AB11EA61F0C004B27BA /* UserSearchVC.swift in Sources */,
 				448BB7371EA85B14009FDC0E /* ImageCollectionViewCell.swift in Sources */,
 				44100BC61EB7E5CC00738CE0 /* JSONColumns.swift in Sources */,
 				44CA94701EBC540700B1A6BA /* User.swift in Sources */,
-				44535D0F1EAA09B0003539C1 /* SearchBlockLogic.swift in Sources */,
+				4404F9D91EC7B55A00CD8E4D /* NetworkingManager.swift in Sources */,
 				44C50AAF1EA61F0C004B27BA /* AppDelegate.swift in Sources */,
-				44C011FB1EB87AF80022FE19 /* NetworkingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

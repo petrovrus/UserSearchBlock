@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate {
+class UserSearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var userSearchBlock: UIView!
     
@@ -18,18 +18,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    private var users: [User] = [] {
+        didSet {
+            userCollectionView.reloadData()
+        }
+    }
+    
     @IBOutlet weak var userCollectionView: UICollectionView!
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfUsersFound
+        return users.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell)
-        let (pictureUrl, username) = (users[indexPath.row].0, users[indexPath.row].1)
-        DispatchQueue.global().async {
+        
+        DispatchQueue.global().async { [weak self] in
             do {
-                let userImageData = try Data(contentsOf: pictureUrl)
+                let username = self?.users[indexPath.row].username
+                let profileUrl = URL(string: (self?.users[indexPath.row].profileURL)!)
+                let userImageData = try Data(contentsOf: profileUrl!)
                 DispatchQueue.global().sync {
                     cell.imageViewOfCell.image = UIImage(data: userImageData)
                     cell.imageLabel.text = username
@@ -41,14 +49,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
-    var users: [(URL, String)] = []
-    
-    var numberOfUsersFound: Int {
-        get {
-            return users.count
-        }
-    }
-    
     @IBOutlet weak var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     var bottomConstraint: CGFloat?
     
@@ -56,20 +56,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.viewDidLoad()
         userSearchField.delegate = self
         bottomConstraint = keyboardHeightLayoutConstraint?.constant
-        NotificationCenter.default.addObserver(self,
+        NSNotificationCenter.defaultCenter().addObserver(self,
                                                selector: #selector(usersListUpdate),
-                                               name: Notification.Name(rawValue: "GetUsersSuccess"),
+                                               name: NSNotification.Name(rawValue: "GetUsersSuccess"),
                                                object: nil)
-        NotificationCenter.default.addObserver(self,
+        NSNotificationCenter.defaultCenter().addObserver(self,
                                                selector: #selector(self.keyboardNotification(notification:)),
-                                               name: Notification.Name.UIKeyboardWillChangeFrame,
+                                               name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
         
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    @objc private func usersListUpdate(notification: Notification) {
-        guard let usersList = notification.object as? Array<(URL, String)> else {
+    @objc private func usersListUpdate(notification: NSNotification) {
+        guard let usersList = notification.object as? [User] else {
             print("Users not found")
             return
         }
@@ -77,7 +77,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     //function for moving view when keyboard appears
@@ -107,6 +107,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         userSearchField.resignFirstResponder()
+        userCollectionView.reloadData()
         return true
     }
 }
